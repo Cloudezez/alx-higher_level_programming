@@ -1,0 +1,22 @@
+#!/bin/bash
+# This script compiles a Python file specified by the PYFILE environment variable
+
+# Check if PYFILE is set
+if [ -z "$PYFILE" ]; then
+    echo "Error: PYFILE environment variable is not set."
+    exit 1
+fi
+
+# Extract the filename without extension
+filename=$(basename "$PYFILE" .py)
+
+# Compile the Python file to bytecode (.pyc)
+echo "Compiling $PYFILE ..."
+python3 -m py_compile "$PYFILE"
+
+# Rename the generated .pyc file to match the expected output filename
+if [ -f "__pycache__/${filename}.cpython-*.pyc" ]; then
+    mv "__pycache__/${filename}.cpython-*.pyc" "${filename}.pyc"
+    rmdir __pycache__
+fi
+
