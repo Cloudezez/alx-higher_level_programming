@@ -1,10 +1,20 @@
 #!/usr/bin/python3
-from urllib import request
+"""
+Fetches https://alx-intranet.hbtn.io/status using urllib and prints details
+about the response.
+"""
 
-url = "https://alx-intranet.hbtn.io/status"
-with request.urlopen(url) as response:
-    body = response.read()
-    print("Body response:")
-    print(f"    - type: {type(body)}")
-    print(f"    - content: {body}")
-    print(f"    - utf8 content: {body.decode('utf-8')}")
+import urllib.request
+
+def main():
+    url = 'https://alx-intranet.hbtn.io/status'
+    with urllib.request.urlopen(url) as response:
+        body = response.read()
+        print("Body response:")
+        print(f"    - type: {type(body)}")
+        print(f"    - content: {body}")
+        print(f"    - utf8 content: {body.decode('utf-8')}")
+
+if __name__ == "__main__":
+    main()
+
