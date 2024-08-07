@@ -29,5 +29,5 @@ def route_6():
     return jsonify({'message': f'Received email: {email} with subject: {subject}'}), 200
 
 if __name__ == '__main__':
-    app.run(host='192.168.100.93', port=5000)
+    app.run(host='0.0.0.0', port=5000)
 
